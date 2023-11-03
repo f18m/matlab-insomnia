@@ -59,7 +59,7 @@ function insomnia(enter_sleep,verbose)
             
             % prevent sleep mode
             insomnia_prevExecState = calllib('kernel32','SetThreadExecutionState', ...
-                                    execstate.ES_CONTINUOUS | execstate.ES_SYSTEM_REQUIRED);
+                                    bitor(execstate.ES_CONTINUOUS, execstate.ES_SYSTEM_REQUIRED));
             if insomnia_prevExecState == 0
                 fprint('Error while trying to prevent system sleep!\n');
                 return;
